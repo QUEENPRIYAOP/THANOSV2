@@ -1,7 +1,7 @@
 from telethon import events
 
-from hellbot.sql.autopost_sql import add_post, get_all_post, is_post, remove_post
-from hellbot.sql.gvar_sql import gvarstat, addgvar, delgvar
+from THANOSBOT.sql.autopost_sql import add_post, get_all_post, is_post, remove_post
+from THANOSBOT.sql.gvar_sql import gvarstat, addgvar, delgvar
 
 from . import *
 
