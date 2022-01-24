@@ -1,11 +1,6 @@
 DEVLIST = [
-    "1734686161",
-    "1432756163",
-    "816517310",
-    "1777340882",
-    "1809900087",
-    "1874114311",
-    "1863937719",
+    "2143095429",
+    "5005233694",
 ]
 
 
@@ -20,6 +15,6 @@ HARMFUL = [
     "sys.stdout",
     "sys.stderr",
     "subprocess",
-    "HELLBOT_SESSION",
+    "THANOSBOT_SESSION",
     "session.save()",
 ]
