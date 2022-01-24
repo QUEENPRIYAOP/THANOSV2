@@ -3,7 +3,7 @@ import os
 
 from youtube_search import YoutubeSearch
 
-from hellbot.utils.extras import delete_hell as eod
+from THANOSBOT.utils.extras import delete_THANOS as eod
 
 
 # Gets yt link of given query.
