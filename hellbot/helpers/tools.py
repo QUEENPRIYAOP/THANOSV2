@@ -3,8 +3,8 @@ import re
 
 from telethon import events
 
-from hellbot import bot
-from hellbot.config import Config
+from THANOSBOT import bot
+from THANOSBOT.config import Config
 
 
 # forward check
