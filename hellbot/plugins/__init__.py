@@ -1,21 +1,21 @@
 import datetime
 import time
 
-from hellbot import *
-from hellbot.clients import *
-from hellbot.config import Config
-from hellbot.helpers import *
-from hellbot.utils import *
-from hellbot.random_strings import *
-from hellbot.version import __hell__
-from hellbot.sql.gvar_sql import gvarstat
+from THANOSBOT import *
+from THANOSBOT.clients import *
+from THANOSBOT.config import Config
+from THANOSBOT.helpers import *
+from THANOSBOT.utils import *
+from THANOSBOT.random_strings import *
+from THANOSBOT.version import __hell__
+from THANOSBOT.sql.gvar_sql import gvarstat
 from telethon import version
 
-hell_logo = "./hellbot/resources/pics/hellbot_logo.jpg"
-cjb = "./hellbot/resources/pics/cjb.jpg"
-restlo = "./hellbot/resources/pics/rest.jpeg"
-shuru = "./hellbot/resources/pics/shuru.jpg"
-shhh = "./hellbot/resources/pics/chup_madarchod.jpeg"
+hell_logo = "./THANOSBOT/resources/pics/hellbot_logo.jpg"
+cjb = "./THANOSBOT/resources/pics/cjb.jpg"
+restlo = "./THANOSBOT/resources/pics/rest.jpeg"
+shuru = "./THANOSBOT/resources/pics/shuru.jpg"
+shhh = "./THANOSBOT/resources/pics/chup_madarchod.jpeg"
 hl = Config.HANDLER
 shl = Config.SUDO_HANDLER
 hell_ver = __hell__
@@ -70,4 +70,4 @@ WELCOME_FORMAT = """**Use these fomats in your welcome note to make them attract
 """
 # will add more soon
 
-# hellbot
+# THANOSBOT
