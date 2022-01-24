@@ -6,8 +6,8 @@ import time
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
 
-from hellbot.clients.session import H2, H3, H4, H5, Hell, HellBot 
-from hellbot.config import Config
+from THANOSBOT.clients.session import H2, H3, H4, H5, THANOS, THANOSBOT 
+from THANOSBOT.config import Config
 
 
 StartTime = time.time()
@@ -26,8 +26,8 @@ else:
 
 LOGS = getLogger(__name__)
 
-bot = Hell
-tbot = HellBot
+bot = THANOS
+tbot = THANOSBOT
 
 
 if not Config.API_HASH:
@@ -92,4 +92,4 @@ AFKREASON = None
 SUDO_LIST = {}
 
 
-# hellbot
+# THANOSBOT
