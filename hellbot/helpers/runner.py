@@ -41,4 +41,4 @@ async def reload_hellbot():
     os._exit(143)
 
 
-# hellbot
+# THANOSBOT
