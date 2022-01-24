@@ -11,15 +11,15 @@ from telethon.tl.types import InputMessagesFilterDocument
 from . import *
 
 
-@hell_cmd(pattern="cmds$")
+@THANOS_cmd(pattern="cmds$")
 async def kk(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     cids = await client_id(event)
     ForGo10God, HELL_USER, hell_mention = cids[0], cids[1], cids[2]
-    cmd = "ls hellbot/plugins"
-    thumb = hell_logo
+    cmd = "ls THANOSBOT/plugins"
+    thumb = THANOS_logo
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -39,19 +39,19 @@ async def kk(event):
                 thumb=thumb,
                 reply_to=reply_to_id,
             )
-            await edit_or_reply(hell_file, f"Output Too Large. This is the file for the list of plugins in bot.\n\n**BY :-** {HELL_USER}")
+            await edit_or_reply(hell_file, f"Output Too Large. This is the file for the list of plugins in bot.\n\n**BY :-** {THANOS_USER}")
             await event.delete()
 
 
-@hell_cmd(pattern="send ([\s\S]*)")
+@THANOS_cmd(pattern="send ([\s\S]*)")
 async def send(event):
     cids = await client_id(event)
-    ForGo10God, HELL_USER, hell_mention = cids[0], cids[1], cids[2]
+    ForGo10God, THANOS_USER, THANOS_mention = cids[0], cids[1], cids[2]
     message_id = event.message.id
-    thumb = hell_logo
+    thumb = THANOS_logo
     input_str = event.pattern_match.group(1)
-    omk = f"**• Plugin name ≈** `{input_str}`\n**• Uploaded by ≈** {hell_mention}\n\n⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ ɦɛʟʟɮօt]({chnl_link})** ⚡"
-    the_plugin_file = "./hellbot/plugins/{}.py".format(input_str)
+    omk = f"**• Plugin name ≈** `{input_str}`\n**• Uploaded by ≈** {THANOS_mention}\n\n⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ ɦɛʟʟɮօt]({chnl_link})** ⚡"
+    the_plugin_file = "./THANOSBOT/plugins/{}.py".format(input_str)
     if os.path.exists(the_plugin_file):
         lauda = await event.client.send_file(
             event.chat_id,
@@ -67,10 +67,10 @@ async def send(event):
         await eod(event, "File not found..... Kek")
 
 
-@hell_cmd(pattern="install(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="install(?:\s|$)([\s\S]*)")
 async def install(event):
     cids = await client_id(event)
-    ForGo10God, HELL_USER, hell_mention = cids[0], cids[1], cids[2]
+    ForGo10God, THANOS_USER, THANOS_mention = cids[0], cids[1], cids[2]
     b = 1
     owo = event.text[9:]
     hell = await eor(event, "__Installing.__")
@@ -78,7 +78,7 @@ async def install(event):
         try:
             downloaded_file_name = await event.client.download_media(  # pylint:disable=E0602
                 await event.get_reply_message(),
-                "./hellbot/plugins/"  # pylint:disable=E0602
+                "./THANOSBOT/plugins/"  # pylint:disable=E0602
             )
             if owo != "-f":
                 op = open(downloaded_file_name, "r")
@@ -106,24 +106,24 @@ async def install(event):
                         else:
                             a = "__Installing...__"
                             b = 1
-                        await hell.edit(a)
-                    return await hell.edit(f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {hell_mention}\n\n{string}\n\n        ⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ ɦɛʟʟɮօt]({chnl_link})** ⚡", link_preview=False)
+                        await THANOS.edit(a)
+                    return await THANOS.edit(f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {THANOS_mention}\n\n{string}\n\n        ⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ ɦɛʟʟɮօt]({chnl_link})** ⚡", link_preview=False)
                 return await hell.edit(f"Installed module `{os.path.basename(downloaded_file_name)}`")
             else:
                 os.remove(downloaded_file_name)
-                return await eod(hell, f"**Failed to Install** \n`Error`\nModule already installed or unknown format")
+                return await eod(THANOS, f"**Failed to Install** \n`Error`\nModule already installed or unknown format")
         except Exception as e: 
-            await eod(hell, f"**Failed to Install** \n`Error`\n{str(e)}")
+            await eod(THANOS, f"**Failed to Install** \n`Error`\n{str(e)}")
             return os.remove(downloaded_file_name)
 
 
-@hell_cmd(pattern="uninstall ([\s\S]*)")
+@THANOS_cmd(pattern="uninstall ([\s\S]*)")
 async def uninstall(event):
     shortname = event.text[11:]
     if ".py" in shortname:
         shortname = shortname.replace(".py", "")
     hell = await eor(event, f"__Trying to uninstall plugin__ `{shortname}` ...")
-    dir_path =f"./hellbot/plugins/{shortname}.py"
+    dir_path =f"./THANOSBOT/plugins/{shortname}.py"
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
@@ -132,7 +132,7 @@ async def uninstall(event):
         await eod(hell, f"**Error !!** \n\n`{dir_path}` : __{e.strerror}__")
 
 
-@hell_cmd(pattern="unload ([\s\S]*)")
+@THANOS_cmd(pattern="unload ([\s\S]*)")
 async def unload(event):
     shortname = event.pattern_match["shortname"]
     try:
@@ -146,7 +146,7 @@ async def unload(event):
         )
 
 
-@hell_cmd(pattern="load ([\s\S]*)")
+@THANOS_cmd(pattern="load ([\s\S]*)")
 async def load(event):
     shortname = event.pattern_match["shortname"]
     try:
