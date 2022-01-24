@@ -8,11 +8,11 @@ from telethon import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
-from hellbot import LOGS, bot, tbot
-from hellbot.clients.session import Hell, H2, H3, H4, H5
-from hellbot.config import Config
-from hellbot.utils import load_module
-from hellbot.version import __hell__ as hellver
+from THANOSBOT import LOGS, bot, tbot
+from THANOSBOT.clients.session import Hell, H2, H3, H4, H5
+from THANOSBOT.config import Config
+from THANOSBOT.utils import load_module
+from THANOSBOT.version import __hell__ as hellver
 hl = Config.HANDLER
 HELL_PIC = "https://telegra.ph/file/cb0bd62632a3a2b6b2726.jpg"
 
@@ -93,12 +93,12 @@ else:
             LOGS.info("Checking Telegram Bot Username...")
             bot.tgbot = tbot
             LOGS.info("Checking Completed. Proceeding to next step...")
-            LOGS.info("🔰 Starting HellBot 🔰")
+            LOGS.info("🔰 Starting THANOSBOT 🔰")
             bot.loop.run_until_complete(h1(Config.BOT_USERNAME))
             failed_client = hells()
             global total
             total = 5 - failed_client
-            LOGS.info("🔥 HellBot Startup Completed 🔥")
+            LOGS.info("🔥 THANOSBOT Startup Completed 🔥")
             LOGS.info(f"» Total Clients = {total} «")
         else:
             bot.start()
@@ -123,7 +123,7 @@ for name in files:
 # let the party begin...
 LOGS.info("Starting Bot Mode !")
 tbot.start()
-LOGS.info("⚡ Your HellBot Is Now Working ⚡")
+LOGS.info("⚡ Your THANOSBOT Is Now Working ⚡")
 LOGS.info("Head to @Its_HellBot for Updates. Also join chat group to get help regarding to HellBot.")
 LOGS.info(f"» Total Clients = {total} «")
 
@@ -135,7 +135,7 @@ async def hell_is_on():
         send_to = Config.LOGGER_ID if Config.LOGGER_ID != 0 else xid
         await bot.send_file(
             send_to,
-            HELL_PIC,
+            THANOS_PIC,
             caption=f"#START \n\n<b><i>Version :</b></i> <code>{hellver}</code> \n<b><i>Clients :</b></i> <code>{total}</code> \n\n<b><i>»» <u><a href='https://t.me/Its_HellBot'>†hê Hêllẞø†</a></u> ««</i></b>",
             parse_mode="HTML",
         )
@@ -194,7 +194,7 @@ async def hell_is_on():
 
 
 
-bot.loop.create_task(hell_is_on())
+bot.loop.create_task(THANOS_is_on())
 
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
@@ -202,4 +202,4 @@ else:
     bot.tgbot = None
     bot.run_until_disconnected()
 
-# hellbot
+# THANOSBOT
