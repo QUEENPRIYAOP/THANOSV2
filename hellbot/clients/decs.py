@@ -5,12 +5,12 @@ from pathlib import Path
 from telethon import events
 
 from .session import H2, H3, H4, H5
-from hellbot import CMD_LIST, LOAD_PLUG, bot
-from hellbot.config import Config
-from hellbot.sql.gvar_sql import gvarstat
+from THANOSBOT import CMD_LIST, LOAD_PLUG, bot
+from THANOSBOT.config import Config
+from THANOSBOT.sql.gvar_sql import gvarstat
 
 
-def hell_cmd(
+def THANOS_cmd(
     pattern: str = None,
     allow_sudo: bool = True,
     disable_edited: bool = False,
@@ -46,18 +46,18 @@ def hell_cmd(
             or not pattern.startswith(r"\#")
             and pattern.startswith(r"^")
         ):
-            hell_reg = sudo_reg = re.compile(pattern)
+            THANOS_reg = sudo_reg = re.compile(pattern)
         else:
-            hell_ = "\\" + Config.HANDLER
+            THANOS_ = "\\" + Config.HANDLER
             sudo_ = "\\" + Config.SUDO_HANDLER
-            hell_reg = re.compile(hell_ + pattern)
+            THANOS_reg = re.compile(hell_ + pattern)
             sudo_reg = re.compile(sudo_ + pattern)
             if command is not None:
                 cmd1 = hell_ + command
                 cmd2 = sudo_ + command
             else:
                 cmd1 = (
-                    (hell_ + pattern).replace("$", "").replace("\\", "").replace("^", "")
+                    (THANOS_ + pattern).replace("$", "").replace("\\", "").replace("^", "")
                 )
                 cmd2 = (
                     (sudo_ + pattern).replace("$", "").replace("\\", "").replace("^", "")
@@ -70,28 +70,28 @@ def hell_cmd(
 
     def decorator(func):
         if not disable_edited:
-            bot.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=hell_reg))
-        bot.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=hell_reg))
+            bot.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=THANOS_reg))
+        bot.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=THANOS_reg))
         if allow_sudo:
             if not disable_edited:
                 bot.add_event_handler(func, events.MessageEdited(**args, from_users=sudo_user, pattern=sudo_reg))
             bot.add_event_handler(func, events.NewMessage(**args, from_users=sudo_user, pattern=sudo_reg))
         if H2:
             if not disable_edited:
-                H2.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=hell_reg))
-            H2.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=hell_reg))
+                H2.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=THANOS_reg))
+            H2.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=THANOS_reg))
         if H3:
             if not disable_edited:
-                H3.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=hell_reg))
-            H3.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=hell_reg))
+                H3.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=THANOS_reg))
+            H3.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=THANOS_reg))
         if H4:
             if not disable_edited:
-                H4.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=hell_reg))
-            H4.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=hell_reg))
+                H4.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=THANOS_reg))
+            H4.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=THANOS_reg))
         if H5:
             if not disable_edited:
-                H5.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=hell_reg))
-            H5.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=hell_reg))
+                H5.add_event_handler(func, events.MessageEdited(**args, outgoing=True, pattern=THANOS_reg))
+            H5.add_event_handler(func, events.NewMessage(**args, outgoing=True, pattern=THANOS_reg))
         try:
             LOAD_PLUG[file_test].append(func)
         except Exception:
