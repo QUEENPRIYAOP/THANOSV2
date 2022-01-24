@@ -1,4 +1,4 @@
-from hellbot.helpers import *
+from THANOSBOT.helpers import *
 
 Chakka = "You"
 Print(f"Teri vhen ki .....")
