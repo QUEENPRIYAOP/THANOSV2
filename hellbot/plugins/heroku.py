@@ -10,7 +10,7 @@ from os import execl
 from time import sleep
 from asyncio.exceptions import CancelledError
 
-from hellbot.sql.gvar_sql import addgvar, delgvar, gvarstat
+from THANOSBOT.sql.gvar_sql import addgvar, delgvar, gvarstat
 from . import *
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
