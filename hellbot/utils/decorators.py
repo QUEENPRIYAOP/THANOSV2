@@ -10,10 +10,10 @@ import telethon.utils
 from telethon import TelegramClient, events
 from telethon.errors import MessageIdInvalidError, MessageNotModifiedError
 
-from hellbot import LOGS, bot, tbot
-from hellbot.clients import H2, H3, H4, H5
-from hellbot.config import Config
-from hellbot.helpers import *
+from THANOSBOT import LOGS, bot, tbot
+from THANOSBOT.clients import H2, H3, H4, H5
+from THANOSBOT.config import Config
+from THANOSBOT.helpers import *
 
 
 # admin cmd or normal user cmd
@@ -124,7 +124,7 @@ def sudo_cmd(pattern=None, command=None, **args):
                 SUDO_LIST.update({file_test: [cmd]})
     args["outgoing"] = True
     # outgoing check
-    # hellbot
+    # THANOSBOT
     if allow_sudo:
         args["from_users"] = list(Config.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
@@ -140,11 +140,11 @@ def sudo_cmd(pattern=None, command=None, **args):
     if black_list_chats:
         args["chats"] = black_list_chats
     # blacklisted chats
-    # hellbot won't respond here
+    # THANOSBOT won't respond here
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         del args["allow_edited_updates"]
     # outgoing check
-    # hellbot
+    # THANOSBOT
     return events.NewMessage(**args)
 
 
@@ -314,4 +314,4 @@ def command(**args):
 
     return decorator
 
-# hellbot
+# THANOSBOT
