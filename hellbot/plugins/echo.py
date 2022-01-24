@@ -4,8 +4,8 @@ import requests
 import telethon.utils
 from telethon import events
 
-from hellbot.sql.echo_sql import addecho, get_all_echos, is_echo, remove_echo
-from hellbot.sql.gvar_sql import addgvar, gvarstat, delgvar
+from THANOSBOT.sql.echo_sql import addecho, get_all_echos, is_echo, remove_echo
+from THANOSBOT.sql.gvar_sql import addgvar, gvarstat, delgvar
 from . import *
 
 
