@@ -4,7 +4,7 @@ import re
 from telethon import events, utils as ut
 from telethon.tl import types
 
-from hellbot.sql.filter_sql import get_filter, add_filter, remove_filter, get_all_filters, remove_all_filters
+from THANOSBOT.sql.filter_sql import get_filter, add_filter, remove_filter, get_all_filters, remove_all_filters
 from . import *
 
 
