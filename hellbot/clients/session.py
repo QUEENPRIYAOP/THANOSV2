@@ -4,13 +4,13 @@ from telethon import TelegramClient
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
-from hellbot.config import Config
+from THANOSBOT.config import Config
 
 
-if Config.HELLBOT_SESSION:
-    session = StringSession(str(Config.HELLBOT_SESSION))
+if Config.THANOSBOT_SESSION:
+    session = StringSession(str(Config.THANOSBOT_SESSION))
 else:
-    session = "hellbot"
+    session = "THANOSBOT"
 
 try:
     Hell = TelegramClient(
@@ -22,7 +22,7 @@ try:
         connection_retries=None,
     )
 except Exception as e:
-    print(f"HELLBOT_SESSION - {e}")
+    print(f"THANOSBOT_SESSION - {e}")
     sys.exit()
 
 
@@ -82,8 +82,8 @@ else:
     H5 = None
 
 
-HellBot = TelegramClient(
-    session="Hell-TBot",
+THANOSBOT = TelegramClient(
+    session="THANOS-BOT",
     api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
     connection=ConnectionTcpAbridged,
