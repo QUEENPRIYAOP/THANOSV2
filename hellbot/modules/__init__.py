@@ -1,2 +1,2 @@
-from hellbot.assistant import *
-from hellbot.helpers import *
+from THANOSBOT.assistant import *
+from THANOSBOT.helpers import *
