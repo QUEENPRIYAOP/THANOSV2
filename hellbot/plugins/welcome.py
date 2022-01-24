@@ -1,7 +1,7 @@
 from telethon import events
 
-from hellbot.sql.welcome_sql import get_current_welcome, add_welcome, rm_welcome, update_welcome
-from hellbot.sql.gvar_sql import gvarstat, addgvar, delgvar
+from THANOSBOT.sql.welcome_sql import get_current_welcome, add_welcome, rm_welcome, update_welcome
+from THANOSBOT.sql.gvar_sql import gvarstat, addgvar, delgvar
 from . import *
 
 lg_id = Config.LOGGER_ID
