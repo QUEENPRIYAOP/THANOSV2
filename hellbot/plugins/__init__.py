@@ -11,14 +11,14 @@ from THANOSBOT.version import __hell__
 from THANOSBOT.sql.gvar_sql import gvarstat
 from telethon import version
 
-hell_logo = "./THANOSBOT/resources/pics/hellbot_logo.jpg"
+THANOS_logo = "./THANOSBOT/resources/pics/hellbot_logo.jpg"
 cjb = "./THANOSBOT/resources/pics/cjb.jpg"
 restlo = "./THANOSBOT/resources/pics/rest.jpeg"
 shuru = "./THANOSBOT/resources/pics/shuru.jpg"
 shhh = "./THANOSBOT/resources/pics/chup_madarchod.jpeg"
 hl = Config.HANDLER
 shl = Config.SUDO_HANDLER
-hell_ver = __hell__
+THANOS_ver = __THANOS__
 tel_ver = version.__version__
 
 async def get_user_id(ids):
@@ -49,9 +49,9 @@ if "@" in my_group:
     my_group = my_group.replace("@", "")
 
 chnl_link = "https://t.me/its_hellbot"
-hell_channel = f"[†hê Hêllẞø†]({chnl_link})"
+THANOS_channel = f"[†hê Hêllẞø†]({chnl_link})"
 grp_link = "https://t.me/HellBot_Chat"
-hell_grp = f"[Hêllẞø† Group]({grp_link})"
+THANOS_grp = f"[Hêllẞø† Group]({grp_link})"
 
 WELCOME_FORMAT = """**Use these fomats in your welcome note to make them attractive.**
   {mention} :  To mention the user
