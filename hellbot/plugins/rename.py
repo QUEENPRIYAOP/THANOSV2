@@ -7,7 +7,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from hellbot.sql.gvar_sql import addgvar, delgvar, gvarstat
+from THANOSBOT.sql.gvar_sql import addgvar, delgvar, gvarstat
 from . import *
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
