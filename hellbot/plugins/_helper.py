@@ -15,10 +15,10 @@ msg = f"""
 """
 botname = Config.BOT_USERNAME
 
-@hell_cmd(pattern="repo$")
+@THANOS_cmd(pattern="repo$")
 async def repo(event):
     cids = await client_id(event)
-    ForGo10God, HELL_USER, hell_mention = cids[0], cids[1], cids[2]
+    ForGo10God, THANOS_USER, THANOS_mention = cids[0], cids[1], cids[2]
     try:
         hell = await event.client.inline_query(botname, "repo")
         await hell[0].click(event.chat_id)
@@ -28,13 +28,13 @@ async def repo(event):
         await eor(event, msg)
 
 
-@hell_cmd(pattern="help$")
+@THANOS_cmd(pattern="help$")
 async def _(event):
     tgbotusername = Config.BOT_USERNAME
     chat = "@Botfather"
     if tgbotusername is not None:
         try:
-            results = await event.client.inline_query(tgbotusername, "hellbot_help")
+            results = await event.client.inline_query(tgbotusername, "THANOSBOT_help")
             await results[0].click(
                 event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
             )
@@ -60,8 +60,8 @@ async def _(event):
         await eor(event, "**⚠️ ERROR !!** \nPlease Re-Check BOT_TOKEN & BOT_USERNAME on Heroku.")
 
 
-@hell_cmd(pattern="plinfo(?:\s|$)([\s\S]*)")
-async def hellbott(event):
+@THANOS_cmd(pattern="plinfo(?:\s|$)([\s\S]*)")
+async def THANOSBOT(event):
     args = event.pattern_match.group(1).lower()
     if args:
         if args in CMD_HELP:
