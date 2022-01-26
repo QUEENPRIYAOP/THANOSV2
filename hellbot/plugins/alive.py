@@ -24,12 +24,12 @@ ALIVE_TEMP = """
 """
 #-------------------------------------------------------------------------------
 
-@hell_cmd(pattern="alive$")
+@THANOS_cmd(pattern="alive$")
 async def up(event):
     cid = await client_id(event)
-    ForGo10God, HELL_USER, hell_mention = cid[0], cid[1], cid[2]
+    ForGo10God, THANOS_USER, THANOS_mention = cid[0], cid[1], cid[2]
     start = datetime.datetime.now()
-    hell = await eor(event, "`Building Alive....`")
+    THANOS = await eor(event, "`Building Alive....`")
     uptime = await get_time((time.time() - StartTime))
     a = gvarstat("ALIVE_PIC")
     if a is not None:
@@ -41,12 +41,12 @@ async def up(event):
         PIC = random.choice(c)
     else:
         PIC = "https://telegra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
-    hell_pic = PIC
+    THANOS_pic = PIC
     end = datetime.datetime.now()
     ling = (end - start).microseconds / 1000
-    omk = ALIVE_TEMP.format(ForGo10God, HELL_USER, tel_ver, hell_ver, is_sudo, uptime, ling)
+    omk = ALIVE_TEMP.format(ForGo10God, THANOS_USER, tel_ver, THANOS_ver, is_sudo, uptime, ling)
     await event.client.send_file(event.chat_id, file=hell_pic, caption=omk, parse_mode="HTML")
-    await hell.delete()
+    await THANOS.delete()
 
 
 msg = """{}\n
@@ -59,25 +59,25 @@ msg = """{}\n
 """
 botname = Config.BOT_USERNAME
 
-@hell_cmd(pattern="hell$")
+@THANOS_cmd(pattern="thanoa$")
 async def hell_a(event):
     cid = await client_id(event)
-    ForGo10God, HELL_USER, hell_mention = cid[0], cid[1], cid[2]
+    ForGo10God, THANOS_USER, THANOS_mention = cid[0], cid[1], cid[2]
     uptime = await get_time((time.time() - StartTime))
     am = gvarstat("ALIVE_MSG") or "<b>»» нєℓℓвσт ιѕ σиℓιиє ««</b>"
     try:
-        hell = await event.client.inline_query(botname, "alive")
+        THANOS = await event.client.inline_query(botname, "alive")
         await hell[0].click(event.chat_id)
         if event.sender_id == ForGo10God:
             await event.delete()
     except (noin, dedbot):
-        await eor(event, msg.format(am, tel_ver, hell_ver, uptime, abuse_m, is_sudo), parse_mode="HTML")
+        await eor(event, msg.format(am, tel_ver, THANOS_ver, uptime, abuse_m, is_sudo), parse_mode="HTML")
 
 
 CmdHelp("alive").add_command(
   "alive", None, "Shows the Default Alive Message"
 ).add_command(
-  "hell", None, "Shows Inline Alive Menu with more details."
+  "thanos", None, "Shows Inline Alive Menu with more details."
 ).add_warning(
   "✅ Harmless Module"
 ).add()
