@@ -9,7 +9,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChatAdminRights, ChatBannedRights, ChannelParticipantsAdmins, MessageEntityMentionName, MessageMediaPhoto
 
 from . import *
-from hellbot.sql.mute_sql import is_muted, mute, unmute
+from THANOSBOT.sql.mute_sql import is_muted, mute, unmute
 
 
 lg_id = Config.LOGGER_ID
@@ -50,7 +50,7 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
-@hell_cmd(pattern="setgpic$")
+@THANOS_cmd(pattern="setgpic$")
 @errors_handler
 async def set_group_photo(event):
     if not event.is_group:
@@ -94,7 +94,7 @@ async def set_group_photo(event):
             )
 
 
-@hell_cmd(pattern="promote(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="promote(?:\s|$)([\s\S]*)")
 @errors_handler
 async def promote(event):
     if event.fwd_from:
@@ -114,7 +114,7 @@ async def promote(event):
         pin_messages=True,
         manage_call=True,
     )
-    hellevent = await eor(event, "`Promoting User...`")
+    THANOSevent = await eor(event, "`Promoting User...`")
     user, rank = await get_user_from_event(event)
     if not rank:
         rank = "ǟɖʍɨռ"
@@ -134,7 +134,7 @@ async def promote(event):
     )
 
 
-@hell_cmd(pattern="demote(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="demote(?:\s|$)([\s\S]*)")
 @errors_handler
 async def demote(event):
     if event.fwd_from:
@@ -145,7 +145,7 @@ async def demote(event):
     if not admin and not creator:
         await eor(event, NO_ADMIN)
         return
-    hellevent = await eor(event, "`Demoting User...`")
+    THANOSevent = await eor(event, "`Demoting User...`")
     rank = "ǟɖʍɨռ"
     user = await get_user_from_event(event)
     user = user[0]
@@ -163,9 +163,9 @@ async def demote(event):
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, newrights, rank))
     except BadRequestError:
-        await hellevent.edit(NO_PERM)
+        await THANOSevent.edit(NO_PERM)
         return
-    await hellevent.edit(f"**😪 Demoted  [{user.first_name}](tg://user?id={user.id})  Successfully In**  `{event.chat.title}`")
+    await THANOSevent.edit(f"**😪 Demoted  [{user.first_name}](tg://user?id={user.id})  Successfully In**  `{event.chat.title}`")
     await event.client.send_message(
         lg_id,
         "#DEMOTE\n"
@@ -174,7 +174,7 @@ async def demote(event):
     )
 
 
-@hell_handler()
+@THANOS_handler()
 async def watcher(event):
     if is_muted(event.sender_id, event.chat_id):
         try:
@@ -183,7 +183,7 @@ async def watcher(event):
             LOGS.info(str(e))
 
 
-@hell_cmd(pattern="mute(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="mute(?:\s|$)([\s\S]*)")
 async def muth(event):
     x = await client_id(event)
     ForGo10God = x[0]
@@ -263,7 +263,7 @@ async def muth(event):
         )
 
 
-@hell_cmd(pattern="unmute(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="unmute(?:\s|$)([\s\S]*)")
 async def nomuth(event):
     x = await client_id(event)
     ForGo10God = x[0]
@@ -280,7 +280,7 @@ async def nomuth(event):
         else:
             await eor(event,"Abb boll bsdk.")
     elif event.is_group:
-        hellevent = await eor(event, "`Unmuting...`")
+        THANOSevent = await eor(event, "`Unmuting...`")
         input_str = event.pattern_match.group(1)
         chat = await event.get_chat()
         admin_ = []
@@ -321,7 +321,7 @@ async def nomuth(event):
                 send_messages=True,
             )
             await eor(
-                hellevent,
+                THANOSevent,
                 f"**Successfully Unmuted**  [{name}](tg://user?id={userid}) **in**  `{chat.title}`",
             )
         except BaseException as be:
@@ -334,10 +334,10 @@ async def nomuth(event):
         )
 
 
-@hell_cmd(pattern="ban(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="ban(?:\s|$)([\s\S]*)")
 @errors_handler
 async def ban(event):
-    hellevent = await eor(event, "`Banning Nigga...`")
+    THANOSevent = await eor(event, "`Banning Nigga...`")
     chat = await event.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -362,9 +362,9 @@ async def ban(event):
         await hellevent.edit(f"**Banned  [{user.first_name}](tg://user?id={user.id})  in** `[{event.chat.title}]` !!\n\nMessage Nuking : **False**")
         return
     if reason:
-        await hellevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{event.chat.title}]` !!\n**Reason :** `{reason}`")
+        await THANOSevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{event.chat.title}]` !!\n**Reason :** `{reason}`")
     else:
-        await hellevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{event.chat.title}]`!!")
+        await THANOSevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{event.chat.title}]`!!")
     await event.client.send_message(
         lg_id,
         "#BAN\n"
@@ -373,7 +373,7 @@ async def ban(event):
     )
 
 
-@hell_cmd(pattern="unban(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="unban(?:\s|$)([\s\S]*)")
 @errors_handler
 async def nothanos(event):
     if event.fwd_from:
@@ -384,14 +384,14 @@ async def nothanos(event):
     if not admin and not creator:
         await eor(event, NO_ADMIN)
         return
-    hellevent = await eor(event, "`Unbanning...`")
+    THANOSevent = await eor(event, "`Unbanning...`")
     user = await get_user_from_event(event)
     user = user[0]
     if not user:
         return
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
-        await hellevent.edit(f"[{user.first_name}](tg://user?id={user.id}) **Is Now Unbanned in**  `{event.chat.title}` !!")
+        await THANOSevent.edit(f"[{user.first_name}](tg://user?id={user.id}) **Is Now Unbanned in**  `{event.chat.title}` !!")
         await event.client.send_message(
             lg_id,
             "#UNBAN\n"
@@ -402,7 +402,7 @@ async def nothanos(event):
         await hellevent.edit("Invalid UserId!! Please Recheck it!!")
 
 
-@hell_cmd(pattern="pin(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="pin(?:\s|$)([\s\S]*)")
 @errors_handler
 async def pin(event):
     chat = await event.get_chat()
@@ -439,7 +439,7 @@ async def pin(event):
         await eod(event, "**📍 Pinned successfully !!**")
 
 
-@hell_cmd(pattern="unpin(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="unpin(?:\s|$)([\s\S]*)")
 async def unpin(event):
     chat = await event.get_chat()
     rply = event.reply_to_msg_id
@@ -468,7 +468,7 @@ async def unpin(event):
         return await eod(event, f"**ERROR !!** \n\n`{e}`")
 
 
-@hell_cmd(pattern="kick(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="kick(?:\s|$)([\s\S]*)")
 @errors_handler
 async def kick(event):
     chat = await event.get_chat()
@@ -487,14 +487,14 @@ async def kick(event):
         await event.client.kick_participant(event.chat_id, user.id)
         await sleep(0.5)
     except Exception as e:
-        await hellevent.edit(NO_PERM + f"\n`{str(e)}`")
+        await THANOSevent.edit(NO_PERM + f"\n`{str(e)}`")
         return
     if reason:
-        await hellevent.edit(
+        await THANOSevent.edit(
             f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{event.chat.title}!`\nReason: `{reason}`"
         )
     else:
-        await hellevent.edit(f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{event.chat.title}!`")
+        await THANOSevent.edit(f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{event.chat.title}!`")
     await event.client.send_message(
         lg_id,
         "#KICK\n"
@@ -503,7 +503,7 @@ async def kick(event):
     )
 
 
-@hell_cmd(pattern="zombies(?:\s|$)([\s\S]*)")
+@THANOS_cmd(pattern="zombies(?:\s|$)([\s\S]*)")
 async def rm_deletedacc(event):
     con = event.pattern_match.group(1).lower()
     del_u = 0
@@ -555,7 +555,7 @@ async def rm_deletedacc(event):
     )
 
 
-@hell_cmd(pattern="undlt$")
+@THANOS_cmd(pattern="undlt$")
 async def _(event):
     c = await event.get_chat()
     if c.admin_rights or c.creator:
